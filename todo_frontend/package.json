@@ -7,13 +7,20 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-axios": "^3.2.4",
+    "vue-router": "^3.5.1",
+    "vuetify": "^2.5.4"
   },
   "devDependencies": {
+    "@mdi/font": "^5.9.55",
     "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "sass": "^1.26.5",
+    "deepmerge": "^1.5.2",
+    "sass": "~1.32",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   }
