@@ -17,16 +17,20 @@
         </v-card-title>
         <v-card-text class="task__name">
           <v-text-field
-              v-model="todo.text"
+              v-model="payload.text"
+              label="Название задачи"
               outlined
-              label="Название задачи"/>
+              clearable/>
         </v-card-text>
         <v-card-text class="category__name">
            <v-combobox
             :items="categories"
-            v-model="title"
+            v-model="payload.title"
+            :search-input.sync="payload.title"
             label="Категория"
             outlined
+            clearable
+            hide-selected
           ></v-combobox>
         </v-card-text>
         <v-card-actions class="submit__btn">
@@ -41,28 +45,35 @@
   </div>
 </template>
 <script>
+const payload =  {
+  text: '',
+  title: ''
+}
 export default {
   name: 'AddTodoDialog',
-  props: ['categories'],
+  props: {
+    categories: {
+      type: Array,
+      default: () => []
+    }
+  },
   data () {
     return {
-      dialog: false,
-      todo: {
-        text: ''
-      },
-      title: ''
+      payload: { ...payload },
+      dialog: false
     }
   },
   methods: {
     toggleDialog () {
       this.dialog = !this.dialog
-      console.log(this.categories)
+      this.payload = { ...payload }
     },
     async sendNewTask () {
       const { data } =
-          await axios.post('http://localhost:8000/api/v1/todos/', {
-
+          await this.axios.post('http://localhost:8000/api/v1/todos/', {
+            ...this.payload
           })
+      this.toggleDialog()
     }
   }
 }

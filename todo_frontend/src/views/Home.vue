@@ -2,9 +2,9 @@
   <div>
     <header class="header">
       <h1 class="header__title">Задачи</h1>
-      <add-todo-dialog :categories="this.listOfCategories"/>
+      <add-todo-dialog :categories="listOfCategories"/>
     </header>
-    <todo-cards v-bind:cards="this.allTodos"/>
+    <todo-cards v-bind:cards="allTodos"/>
   </div>
 </template>
 

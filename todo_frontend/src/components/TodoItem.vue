@@ -13,13 +13,14 @@
             v-on:click="changeIsCompleted(todo)"
         >
         <div v-if="!todo.isCompleted">
-          <p class="card__text"
-             style="text-decoration: none">{{ todo.text }}</p>
+          <div class="card__text"
+             style="text-decoration: none">{{ todo.text }}</div>
         </div>
         <div v-else>
-          <p class="card__text"
-             style="text-decoration: line-through">{{ todo.text }}</p>
+          <div class="card__text"
+             style="text-decoration: line-through">{{ todo.text }}</div>
         </div>
+         <v-icon class="delete__todo" @click="deleteTodo(todo)">mdi-close</v-icon>
       </li>
     </ul>
   </div>
@@ -52,7 +53,11 @@ export default {
             `http://localhost:8000/api/v1/todos/${todo.id}/`, {
               isCompleted
         })
-
+    },
+    async deleteTodo(todo) {
+      console.log(todo)
+      const { data } =
+      await axios.delete(`http://localhost:8000/api/v1/todos/${todo.id}/`)
     }
   }
 }
@@ -76,10 +81,16 @@ ul {
   display: flex;
   align-items: center;
   margin-bottom: 14px;
+  position: relative;
 }
 .card__checkbox {
   width: 20px;
   height: 20px;
   margin-right: 14px;
+}
+.card__content .delete__todo {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
 }
 </style>

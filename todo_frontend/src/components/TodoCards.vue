@@ -33,7 +33,7 @@ export default {
   width: 100%;
 }
 .todo__card {
-  width: 33%;
+  width: 32%;
   margin: 30px 5px;
   padding: 10px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.75);
